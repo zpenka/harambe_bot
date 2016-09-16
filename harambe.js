@@ -19,15 +19,15 @@ const ambience = [
   'ambient',
 ];
 
-const registerResponse = (listenFor, say, context) => {
-  controller.hears(listenFor, context, (bot, event) => {
-    return bot.reply(event, say);
-  });
-};
+const registerResponse = (listenFor, say, context) => controller.hears(listenFor, context, (bot, event) => bot.reply(event, say));
 
 // Simple responses
-registerResponse('fuck you', 'fuck you too', on_mention);
 registerResponse('harambe', '#dicksoutforme', ambience);
+registerResponse('fuck you', 'fuck you too', on_mention);
+registerResponse('favorite band', 'Harambe and the Gone Apes, obviously', on_mention);
+registerResponse('you a wizard', 'No, I\'m obviously a fucking ape', on_mention);
+registerResponse('gone ape', 'AWWW YEAA', on_mention);
+registerResponse('', 'What the fuck do you want, human?', on_mention);
 
 // Random Number Generator
 controller.hears('rng', on_mention, (harambe, event) => {
@@ -65,7 +65,7 @@ controller.hears(['be eloquent'], on_mention, (harambe, event) => {
 
     const third = (response, convo) => {
       convo.ask('I think we can be great, eloquent friends. Do you agree?', (response, convo) => {
-        convo.say('Ok! Good bye.');
+        convo.say('Ok! Good bye, shit eater.');
         convo.next();
       });
     };
