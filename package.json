@@ -1,0 +1,17 @@
+{
+  "name": "harambe",
+  "version": "1.0.0",
+  "description": "a slack harambe bot",
+  "main": "harambe.js",
+  "scripts": {
+    "start": "node harambe.js"
+  },
+  "keywords": [
+    "harambe"
+  ],
+  "author": "Zack Penka",
+  "license": "ISC",
+  "dependencies": {
+    "botkit": "^0.2.2"
+  }
+}
