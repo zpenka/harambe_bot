@@ -26,7 +26,8 @@ registerResponse('harambe', '#dicksoutforme', ambience);
 registerResponse('fuck you', 'fuck you too', on_mention);
 registerResponse('favorite band', 'Harambe and the Gone Apes, obviously', on_mention);
 registerResponse('you a wizard', 'No, I\'m obviously a fucking ape', on_mention);
-registerResponse('gone ape', 'AWWW YEAA', on_mention);
+registerResponse('gone ape', 'AWWW YEAA', ambience);
+registerResponse('tingle', 'fuck that guy', ambience);
 
 // Random Number Generator
 controller.hears('rng', on_mention, (harambe, event) => {
