@@ -11,6 +11,13 @@ controller.spawn({
   token: process.env.token,
 }).startRTM();
 
+const people = {
+  Zack: 'U2BQVDSGL',
+  Tingle: 'U2BQHMQV6',
+  Ryan: 'U2BQ4UJ3X',
+  Jimmy: 'U2BRQ3CUE',
+}
+
 const on_mention = [
   'direct_message',
   'direct_mention',
@@ -32,7 +39,6 @@ registerResponse('gone ape', 'AWWW YEAA', ambience);
 registerResponse('wtf', 'there is not reason to be upset', ambience);
 registerResponse('thanks harambe', 'no problem, you beautiful motherfuck :weed:', ambience);
 
-
 // Random Number Generator
 controller.hears('rng', on_mention, (harambe, event) => {
   const random_number = Math.floor(Math.random() * (999 - 1 + 1)) + 1;
@@ -42,12 +48,8 @@ controller.hears('rng', on_mention, (harambe, event) => {
 
 // He still doesn't like Tingle
 controller.hears('do you like me', on_mention, (harambe, event) => {
-  const person = event.user_profile.last_name.toLowerCase();
-  let answer = 'yes';
-
-  if (person === 'tingle') {
-    answer = 'no';
-  }
+  const person = event.user;
+  const answer = person === people.Tingle ? 'no' : 'yes';
 
   return harambe.reply(event, answer);
 });
