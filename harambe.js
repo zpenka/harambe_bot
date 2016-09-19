@@ -1,6 +1,26 @@
 'use strict';
 
 const Botkit = require('botkit');
+const Cleverbot = require('cleverbot.io');
+
+const creds = {
+  clever_api: {
+    USER: process.env.CLEVER_API_USER,
+    KEY: process.env.CLEVER_API_KEY,
+  },
+};
+
+const clever_harambe = new Cleverbot(creds.clever_api.USER, creds.clever_api.KEY);
+
+cleverbot.setNick('Harambe');
+
+cleverbot.create((err, session) => {
+    if (err) {
+        console.log('cleverbot create fail.');
+    } else {
+        console.log('cleverbot create success.');
+    }
+});
 
 const controller = Botkit.slackbot({
   debug: process.env.test || true,
@@ -30,6 +50,19 @@ const ambience = [
 
 const registerResponse = (listenFor, say, context) => controller.hears(listenFor, context, (bot, event) => bot.reply(event, say));
 
+// Set up clever bot
+controller.hears('', ambience, (harambe, event) => {
+    const message = event.text;
+
+    return cleverbot.ask(message, (err, response) => {
+        if (!err) {
+            return harambe.reply(event, response);
+        } else {
+            console.log(`cleverbot err: ${err}`);
+        }
+    });
+})
+
 // Simple responses
 registerResponse('harambe', '#dicksoutforme', ambience);
 registerResponse('favorite band', 'Harambe and the Gone Apes, obviously', on_mention);
@@ -40,7 +73,7 @@ registerResponse('thanks', 'no problem, you beautiful motherfuck :weed:', on_men
 registerResponse('favorite breakfast cereal', 'cheerios you cock choking motherfucker', on_mention);
 registerResponse('best friend', 'satan', on_mention);
 registerResponse('ape heaven', 'it fucking sucks you anus licking cunt', on_mention);
-registerResponse('is lit', ':party_parrot: :fast_parrot: :slow_parrot: :sassy_parrot: :slow_parrot: :goth_parrot: GONE APE MUTHAFUCKAAS :exploding_parrot: :moonwalking_parrot: :aussie_parrot: :deal_with_it_parrot: :aussie_conga_line_parrot:', on_mention);
+registerResponse('lit', ':party_parrot: :fast_parrot: :slow_parrot: :sassy_parrot: :slow_parrot: :goth_parrot: GONE APE MUTHAFUCKAAS :exploding_parrot: :moonwalking_parrot: :aussie_parrot: :deal_with_it_parrot: :aussie_conga_line_parrot:', on_mention);
 
 controller.hears('fuck you', on_mention, (harambe, event) => {
   if (event.user === people.Ryan) {

@@ -12,6 +12,8 @@
   "author": "Zack Penka",
   "license": "ISC",
   "dependencies": {
-    "botkit": "^0.2.2"
+    "botkit": "^0.2.2",
+    "cleverbot": "^1.0.4",
+    "cleverbot.io": "^1.0.4"
   }
 }
