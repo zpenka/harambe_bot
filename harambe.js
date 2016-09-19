@@ -158,7 +158,7 @@ controller.hears('', ambience, (harambe, event) => {
   const message = event.text;
   const random_number = Math.floor(Math.random() * 99);
 
-  if (random_number <= 3) {
+  if (random_number === 0) {
     return clever_harambe.ask(message, (err, response) => {
         if (!err) {
             return harambe.reply(event, response);
