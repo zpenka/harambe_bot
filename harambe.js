@@ -56,7 +56,7 @@ registerResponse('favorite band', 'Harambe and the Gone Apes, obviously', on_men
 registerResponse('you a wizard', 'No, I\'m obviously a fucking ape', on_mention);
 registerResponse('gone ape', 'AWWW YEAA', ambience);
 registerResponse('wtf', 'there is no reason to be upset', ambience);
-registerResponse('thanks', 'no problem, you beautiful motherfuck :weed:', on_mention);
+registerResponse(['thank you', 'thanks'], 'no problem, you beautiful motherfuck :weed:', on_mention);
 registerResponse('favorite breakfast cereal', 'cheerios you cock choking motherfucker', on_mention);
 registerResponse('best friend', 'satan', on_mention);
 registerResponse('ape heaven', 'it fucking sucks you anus licking cunt', on_mention);
@@ -83,7 +83,7 @@ controller.hears('sup', ambience, (harambe, event) => {
     return harambe.reply(event, 'let me guess, you\'re here to tell us all about how great _Frames_ is. :bored_parrot:');
   }
 
-  return harambe.reply(event, 'fuck you too');
+  return harambe.reply(event, 'shut the fuck up');
 });
 
 // Random Number Generator
