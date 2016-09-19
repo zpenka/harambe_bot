@@ -40,7 +40,7 @@ registerResponse('thanks', 'no problem, you beautiful motherfuck :weed:', on_men
 registerResponse('favorite breakfast cereal', 'cheerios you cock choking motherfucker', on_mention);
 registerResponse('best friend', 'satan', on_mention);
 registerResponse('ape heaven', 'it fucking sucks you anus licking cunt', on_mention);
-registerResponse('is lit', ':party_parrot: :fast_parrot: :slow_parrot: :sassy_parrot: :slow_parrot: :goth_parrot: GONE APE MUTHAFUCKAAS :exploding_parrot: :moonwalking_parrot: :aussie_parrot: :deal_with_it_parrot: :aussia_conga_line_parrot:', on_mention);
+registerResponse('is lit', ':party_parrot: :fast_parrot: :slow_parrot: :sassy_parrot: :slow_parrot: :goth_parrot: GONE APE MUTHAFUCKAAS :exploding_parrot: :moonwalking_parrot: :aussie_parrot: :deal_with_it_parrot: :aussie_conga_line_parrot:', on_mention);
 
 controller.hears('fuck you', on_mention, (harambe, event) => {
   if (event.user === people.Ryan) {
