@@ -29,6 +29,7 @@ registerResponse('you a wizard', 'No, I\'m obviously a fucking ape', on_mention)
 registerResponse('gone ape', 'AWWW YEAA', ambience);
 registerResponse('wtf', 'there is not reason to be upset', ambience);
 registerResponse('thanks harambe', 'no problem, you beautiful motherfuck :weed:', ambience);
+registerResponse('do you like me', 'no', on_mention);
 
 
 
