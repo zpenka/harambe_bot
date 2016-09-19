@@ -24,6 +24,13 @@ const ambience = [
   'ambient',
 ];
 
+const all = [
+  'direct_message',
+  'direct_mention',
+  'mention',
+  'ambient',
+];
+
 const Botkit = require('botkit');
 const Cleverbot = require('cleverbot.io');
 
@@ -94,15 +101,7 @@ harambe.hears('love you', on_mention, (bot, event) => {
   return bot.reply(event, ':heart:');
 });
 
-harambe.on('user_channel_join', (bot, event) => {
-  const channel = event.channel;
-  const name = event.user_profile.first_name;
-  const text = `Welcome to the forums, ${name}, my name is bosk1, fuck you`;
-
-  return bot.say({ text, channel });
-});
-
-harambe.hears(['sup'], on_mention, (bot, event) => {
+harambe.hears('sup', on_mention, (bot, event) => {
     const greeting = (response, convo) => {
       convo.ask('nm, u? LOL :neverusethis:', (response, convo) => {
         convo.say('shut the fuck up');
@@ -113,32 +112,34 @@ harambe.hears(['sup'], on_mention, (bot, event) => {
     bot.startConversation(event, greeting);
 });
 
-// Set up clever bot NOTE: These are last for a reason, so they do not override the responses defined above
-// TODO: Refactor these two
-harambe.hears('', ambience, (bot, event) => {
-  const message = event.text;
-  const random_number = Math.floor(Math.random() * 99);
+// Greet new users
+harambe.on('user_channel_join', (bot, event) => {
+  const channel = event.channel;
+  const name = event.user_profile.first_name;
+  const text = `Welcome to the forums, ${name}, my name is bosk1, fuck you`;
 
-  if (random_number === 0) {
-    return clever_harambe.ask(message, (err, response) => {
-        if (!err) {
-            return bot.reply(event, response);
-        } else {
-            console.log(`Cleverbot err: ${err}`);
-        }
-    });
-  }
-
-  return;
+  return bot.say({ text, channel });
 });
 
-harambe.hears('', on_mention, (bot, event) => {
+// Set up clever bot NOTE: This is last for a reason, so it does not override the responses defined above
+harambe.hears('', all, (bot, event) => {
+  const event_type = event.event;
   const message = event.text;
+
+  if (event_type === 'ambient') {
+    // Roll the dice (1% chance dice <_<)
+    const random_number = Math.floor(Math.random() * 99);
+
+    // Filter out the majority (99%) of the ambient messages
+    if (!(random_number === 0)) {
+      return;
+    }
+  }
 
   return clever_harambe.ask(message, (err, response) => {
     if (err) {
-      console.log(`Cleverbot err: ${err}`);
-      return;
+      // Handle errors with cleverbot api call
+      return console.log(`Cleverbot error: ${err}`);
     }
 
     return bot.reply(event, response);
