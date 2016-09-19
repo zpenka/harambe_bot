@@ -76,14 +76,6 @@ controller.hears('love you', on_mention, (harambe, event) => {
   return harambe.reply(event, ':heart:');
 });
 
-controller.hears('sup', ambience, (harambe, event) => {
-  if (event.user === people.Jimmy) {
-    return harambe.reply(event, 'let me guess, you\'re here to tell us all about how great _Frames_ is. :bored_parrot:');
-  }
-
-  return harambe.reply(event, 'shut the fuck up');
-});
-
 // Random Number Generator
 controller.hears('rng', on_mention, (harambe, event) => {
   const random_number = Math.floor(Math.random() * (999 - 1 + 1)) + 1;
