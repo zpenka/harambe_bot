@@ -32,12 +32,21 @@ const registerResponse = (listenFor, say, context) => controller.hears(listenFor
 
 // Simple responses
 registerResponse('harambe', '#dicksoutforme', ambience);
-registerResponse('fuck you', 'fuck you too', on_mention);
 registerResponse('favorite band', 'Harambe and the Gone Apes, obviously', on_mention);
 registerResponse('you a wizard', 'No, I\'m obviously a fucking ape', on_mention);
 registerResponse('gone ape', 'AWWW YEAA', ambience);
 registerResponse('wtf', 'there is not reason to be upset', ambience);
 registerResponse('thanks', 'no problem, you beautiful motherfuck :weed:', on_mention);
+registerResponse('favorite breakfast cereal', 'cheerios you cock choking motherfucker', on_mention);
+registerResponse('best friend', 'satan', on_mention);
+
+controller.hears('fuck you', on_mention, (harambe, event) => {
+  if (event.user === people.Ryan) {
+    return harambe.reply(event, 'god dammit Ryan you fucking chode, shut the fuck up');
+  }
+
+  return harambe.reply(event, 'fuck you too');
+}
 
 // Random Number Generator
 controller.hears('rng', on_mention, (harambe, event) => {
@@ -89,7 +98,11 @@ controller.hears(['be eloquent'], on_mention, (harambe, event) => {
       });
     };
 
-    harambe.startConversation(event, first);
+    if (event.user === people.Tingle) {
+      return harambe.reply(event, 'no, fuck you');
+    }
+
+    return harambe.startConversation(event, first);
 });
 
 // greeting conversation
