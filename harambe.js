@@ -1,3 +1,5 @@
+'use strict';
+
 const Botkit = require('botkit');
 
 const controller = Botkit.slackbot({
