@@ -50,19 +50,6 @@ const ambience = [
 
 const registerResponse = (listenFor, say, context) => controller.hears(listenFor, context, (bot, event) => bot.reply(event, say));
 
-// Set up clever bot
-controller.hears('', ambience, (harambe, event) => {
-    const message = event.text;
-
-    return clever_harambe.ask(message, (err, response) => {
-        if (!err) {
-            return harambe.reply(event, response);
-        } else {
-            console.log(`Cleverbot err: ${err}`);
-        }
-    });
-})
-
 // Simple responses
 registerResponse('harambe', '#dicksoutforme', ambience);
 registerResponse('favorite band', 'Harambe and the Gone Apes, obviously', on_mention);
@@ -166,4 +153,22 @@ controller.hears(['sup', 'hey', 'hello'], on_mention, (harambe, event) => {
     };
 
     harambe.startConversation(event, greeting);
+});
+
+// Set up clever bot
+controller.hears('', ambience, (harambe, event) => {
+  const message = event.text;
+  const random_number = Math.floor(Math.random() * 10);
+
+  if (random_number === 0) {
+    return clever_harambe.ask(message, (err, response) => {
+        if (!err) {
+            return harambe.reply(event, response);
+        } else {
+            console.log(`Cleverbot err: ${err}`);
+        }
+    });
+  }
+
+  return;
 });
