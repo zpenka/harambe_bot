@@ -35,10 +35,12 @@ registerResponse('harambe', '#dicksoutforme', ambience);
 registerResponse('favorite band', 'Harambe and the Gone Apes, obviously', on_mention);
 registerResponse('you a wizard', 'No, I\'m obviously a fucking ape', on_mention);
 registerResponse('gone ape', 'AWWW YEAA', ambience);
-registerResponse('wtf', 'there is not reason to be upset', ambience);
+registerResponse('wtf', 'there is no reason to be upset', ambience);
 registerResponse('thanks', 'no problem, you beautiful motherfuck :weed:', on_mention);
 registerResponse('favorite breakfast cereal', 'cheerios you cock choking motherfucker', on_mention);
 registerResponse('best friend', 'satan', on_mention);
+registerResponse('ape heaven', 'it fucking sucks you anus licking cunt', on_mention);
+registerResponse('is lit', ':party_parrot: :fast_parrot: :slow_parrot: :sassy_parrot: :slow_parrot: :goth_parrot: GONE APE MUTHAFUCKAAS :exploding_parrot: :moonwalking_parrot: :aussie_parrot: :deal_with_it_parrot: :aussia_conga_line_parrot:', on_mention);
 
 controller.hears('fuck you', on_mention, (harambe, event) => {
   if (event.user === people.Ryan) {
@@ -46,6 +48,14 @@ controller.hears('fuck you', on_mention, (harambe, event) => {
   }
 
   return harambe.reply(event, 'fuck you too');
+});
+
+controller.hears('love you', on_mention, (harambe, event) => {
+  if (event.user === people.Tingle) {
+    return harambe.reply(event, 'no, just no. fuck no.');
+  }
+
+  return harambe.reply(event, ':heart:');
 });
 
 controller.hears('sup', ambience, (harambe, event) => {
