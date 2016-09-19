@@ -51,7 +51,6 @@ const ambience = [
 const registerResponse = (listenFor, say, context) => controller.hears(listenFor, context, (bot, event) => bot.reply(event, say));
 
 // Simple responses
-registerResponse('harambe', '#dicksoutforme', ambience);
 registerResponse('favorite band', 'Harambe and the Gone Apes, obviously', on_mention);
 registerResponse('you a wizard', 'No, I\'m obviously a fucking ape', on_mention);
 registerResponse('gone ape', 'AWWW YEAA', ambience);
@@ -159,9 +158,9 @@ controller.hears(['sup', 'hey', 'hello'], on_mention, (harambe, event) => {
 // Set up clever bot
 controller.hears('', ambience, (harambe, event) => {
   const message = event.text;
-  const random_number = Math.floor(Math.random() * 10);
+  const random_number = Math.floor(Math.random() * 99);
 
-  if (random_number === 0) {
+  if (random_number <= 3) {
     return clever_harambe.ask(message, (err, response) => {
         if (!err) {
             return harambe.reply(event, response);
