@@ -29,8 +29,6 @@ registerResponse('you a wizard', 'No, I\'m obviously a fucking ape', on_mention)
 registerResponse('gone ape', 'AWWW YEAA', ambience);
 registerResponse('wtf', 'there is not reason to be upset', ambience);
 registerResponse('thanks harambe', 'no problem, you beautiful motherfuck :weed:', ambience);
-registerResponse('do you like me', 'no', on_mention);
-
 
 
 // Random Number Generator
@@ -39,6 +37,19 @@ controller.hears('rng', on_mention, (harambe, event) => {
 
   return harambe.reply(event, `Here is a random number between 1 and 999 you fucking shit: ${random_number}`);
 });
+
+// He still doesn't like Tingle
+controller.hears('do you like me', on_mention, (harambe, event) => {
+  const person = event.user_profile.last_name.toLowerCase();
+  let answer = 'yes';
+
+  if (person === 'tingle') {
+    answer = 'no';
+  }
+
+  return harambe.reply(event, answer);
+});
+
 
 // Welcome new users
 controller.on('user_channel_join', (harambe, event) => {
