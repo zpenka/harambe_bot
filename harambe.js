@@ -46,7 +46,7 @@ controller.hears('fuck you', on_mention, (harambe, event) => {
   }
 
   return harambe.reply(event, 'fuck you too');
-}
+});
 
 // Random Number Generator
 controller.hears('rng', on_mention, (harambe, event) => {
