@@ -12,9 +12,9 @@ const creds = {
 
 const clever_harambe = new Cleverbot(creds.clever_api.USER, creds.clever_api.KEY);
 
-Cleverbot.setNick('Harambe');
+clever_harambe.setNick('Harambe');
 
-Cleverbot.create((err, session) => {
+clever_harambe.create((err, session) => {
     if (err) {
         console.log('Cleverbot create fail.');
     } else {
@@ -54,7 +54,7 @@ const registerResponse = (listenFor, say, context) => controller.hears(listenFor
 controller.hears('', ambience, (harambe, event) => {
     const message = event.text;
 
-    return Cleverbot.ask(message, (err, response) => {
+    return clever_harambe.ask(message, (err, response) => {
         if (!err) {
             return harambe.reply(event, response);
         } else {
