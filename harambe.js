@@ -27,13 +27,16 @@ registerResponse('fuck you', 'fuck you too', on_mention);
 registerResponse('favorite band', 'Harambe and the Gone Apes, obviously', on_mention);
 registerResponse('you a wizard', 'No, I\'m obviously a fucking ape', on_mention);
 registerResponse('gone ape', 'AWWW YEAA', ambience);
-registerResponse('tingle', 'fuck that guy', ambience);
+registerResponse('wtf', 'there is not reason to be upset', ambience);
+registerResponse('thanks harambe', 'no problem, you beautiful motherfuck :weed:', ambience);
+
+
 
 // Random Number Generator
 controller.hears('rng', on_mention, (harambe, event) => {
   const random_number = Math.floor(Math.random() * (999 - 1 + 1)) + 1;
 
-  return harambe.reply(event, `Here's a random number between 1 and 999 you fucking shit: ${random_number}`);
+  return harambe.reply(event, `Here is a random number between 1 and 999 you fucking shit: ${random_number}`);
 });
 
 // Welcome new users
@@ -73,3 +76,14 @@ controller.hears(['be eloquent'], on_mention, (harambe, event) => {
     harambe.startConversation(event, first);
 });
 
+// greeting conversation
+controller.hears(['sup', 'hey', 'hello'], on_mention, (harambe, event) => {
+    const greeting = (response, convo) => {
+      convo.ask('nm, u? LOL :neverusethis:', (response, convo) => {
+        convo.say('shut the fuck up');
+        convo.next();
+      });
+    };
+
+    harambe.startConversation(event, greeting);
+});
