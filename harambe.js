@@ -48,7 +48,7 @@ controller.hears('fuck you', on_mention, (harambe, event) => {
   return harambe.reply(event, 'fuck you too');
 });
 
-controller.hears('sup', ambient, (harambe, event) => {
+controller.hears('sup', ambience, (harambe, event) => {
   if (event.user === people.Jimmy) {
     return harambe.reply(event, 'let me guess, you\'re here to tell us all about how great _Frames_ is. :bored_parrot:');
   }
