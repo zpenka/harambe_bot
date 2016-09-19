@@ -173,3 +173,16 @@ controller.hears('', ambience, (harambe, event) => {
 
   return;
 });
+
+controller.hears('', on_mention, (harambe, event) => {
+  const message = event.text;
+
+  return clever_harambe.ask(message, (err, response) => {
+    if (err) {
+      console.log(`Cleverbot err: ${err}`);
+      return;
+    }
+
+    return harambe.reply(event, response);
+  });
+});
