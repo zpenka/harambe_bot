@@ -7,13 +7,6 @@ const creds = {
   },
 };
 
-const people = {
-  Zack: 'U2BQVDSGL',
-  Tingle: 'U2BQHMQV6',
-  Ryan: 'U2BQ4UJ3X',
-  Jimmy: 'U2BRQ3CUE',
-}
-
 const on_mention = [
   'direct_message',
   'direct_mention',
@@ -63,48 +56,22 @@ const registerResponse = (listenFor, say, context) => harambe.hears(listenFor, c
 
 // Simple responses
 registerResponse('favorite band', 'Harambe and the Gone Apes, obviously', on_mention);
-registerResponse('you a wizard', 'No, I\'m obviously a fucking ape', on_mention);
-registerResponse(['thank you', 'thanks'], 'no problem, you beautiful motherfuck :weed:', on_mention);
-registerResponse('favorite breakfast cereal', 'cheerios you cock choking motherfucker', on_mention);
-registerResponse('best friend', 'satan', on_mention);
-registerResponse('ape heaven', 'it fucking sucks you anus licking cunt', on_mention);
-registerResponse('do you like', 'no, fuck that', on_mention);
-registerResponse('lit', ':party_parrot: :fast_parrot: :slow_parrot: :sassy_parrot: :slow_parrot: :goth_parrot: GONE APE MUTHAFUCKAAS :exploding_parrot: :moonwalking_parrot: :aussie_parrot: :deal_with_it_parrot: :aussie_conga_line_parrot:', on_mention);
-
-// Slightly more complex responses TODO refactor this somehow
-harambe.hears('fuck you', on_mention, (bot, event) => {
-  if (event.user === people.Ryan) {
-    return bot.reply(event, 'god dammit Ryan you fucking chode, shut the fuck up');
-  }
-
-  return bot.reply(event, 'fuck you too');
-});
+registerResponse('you a wizard', 'No, I\'m obviously an ape', on_mention);
+registerResponse(['thank you', 'thanks'], 'no problem, you beautiful person', on_mention);
+registerResponse('favorite breakfast cereal', 'cheerios', on_mention);
+registerResponse('do you like', 'no', on_mention);
+registerResponse('lit', ':party_parrot: :fast_parrot: :slow_parrot: :sassy_parrot: :slow_parrot: :goth_parrot: GONE APE :exploding_parrot: :moonwalking_parrot: :aussie_parrot: :deal_with_it_parrot: :aussie_conga_line_parrot:', on_mention);
 
 harambe.hears('rng', on_mention, (bot, event) => {
   const random_number = Math.floor(Math.random() * (999 - 1 + 1)) + 1;
 
-  return bot.reply(event, `Here is a random number between 1 and 999 you fucking shit: ${random_number}`);
-});
-
-harambe.hears('do you like me', on_mention, (bot, event) => {
-  const person = event.user;
-  const answer = person === people.Tingle ? 'no' : 'yes';
-
-  return bot.reply(event, answer);
-});
-
-harambe.hears('love you', on_mention, (bot, event) => {
-  if (event.user === people.Tingle) {
-    return bot.reply(event, 'no, just no. fuck no.');
-  }
-
-  return bot.reply(event, ':heart:');
+  return bot.reply(event, `Here is a random number between 1 and 999: ${random_number}`);
 });
 
 harambe.hears('sup', on_mention, (bot, event) => {
     const greeting = (response, convo) => {
       convo.ask('nm, u? LOL :neverusethis:', (response, convo) => {
-        convo.say('shut the fuck up');
+        convo.say('shut up');
         convo.next();
       });
     };
@@ -116,7 +83,7 @@ harambe.hears('sup', on_mention, (bot, event) => {
 harambe.on('user_channel_join', (bot, event) => {
   const channel = event.channel;
   const name = event.user_profile.first_name;
-  const text = `Welcome to the forums, ${name}, my name is bosk1, fuck you`;
+  const text = `Welcome to the forums, ${name}, my name is bosk1`;
 
   return bot.say({ text, channel });
 });
