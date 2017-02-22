@@ -97,14 +97,14 @@ ingvay.hears('', all, (bot, event) => {
     // Roll the dice (1% chance dice <_<)
     const random_number = Math.floor(Math.random() * 99);
 
+    // A little more occasionally instead say 'it me ingvay'
+    if (random_number > 0 && random_number < 11) {
+      return bot.reply(event, 'it me\ningvay malmstein');
+    }
+
     // Filter out the majority of the ambient messages
     if (!(random_number === 0)) {
       return;
-    }
-
-    // A little more occasionally instead say 'it me ingvay'
-    if (!(random_number > 0 && random_number < 11)) {
-      return bot.reply(event, 'it me\ningvay malmstein');
     }
   }
 
