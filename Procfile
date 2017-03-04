@@ -1,1 +1,1 @@
-worker: node ingvay.js
+worker: node bot.js

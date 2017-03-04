@@ -1,14 +1,15 @@
 {
-  "name": "ingvay_malmstein",
+  "name": "nobody likes baseball bot",
   "version": "1.0.0",
-  "description": "a slack ingvay malmstein bot",
-  "main": "ingvay.js",
+  "description": "a slack bot",
+  "main": "bot.js",
   "scripts": {
-    "start": "node ingvay.js"
+    "start": "node bot.js"
   },
   "keywords": [
-    "ingvay",
-    "malmstein"
+    "nobody",
+    "likes",
+    "baseball"
   ],
   "author": "Zack Penka",
   "license": "ISC",
